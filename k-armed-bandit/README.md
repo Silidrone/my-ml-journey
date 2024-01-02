@@ -1,0 +1,1 @@
+I've done this little exercise following my Reinforcement Learning course (SE4488) at my uni, given by professor Dr. Dindar Oz
