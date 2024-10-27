@@ -1,0 +1,27 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "(gdb) Launch",  // Name of the configuration
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/output_executable",  // The output file from tasks.json
+            "args": [],  // Any command-line arguments you want to pass
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": true,  // Show an external console to run your program
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "build cpp",  // Link the build task here
+            "miDebuggerPath": "/usr/bin/gdb",  // Path to your debugger
+            "internalConsoleOptions": "openOnSessionStart"
+        }
+    ]
+}

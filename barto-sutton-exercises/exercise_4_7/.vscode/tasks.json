@@ -1,0 +1,26 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build cpp",
+            "type": "shell",
+            "command": "/usr/bin/g++",
+            "args": [
+                "-g",
+                "${file}",
+                "-o", "${workspaceFolder}/output_executable",
+                "-I", "${workspaceFolder}/",
+                "-I", "/usr/include/python3.10",
+                "-I", "/usr/lib/python3/dist-packages/numpy/core/include",
+                "-std=c++11",
+                "-L", "/usr/lib/python3.10/config-3.10-x86_64-linux-gnu", // Link Python lib path (adjust to your system)
+                "-lpython3.10" // Link Python library
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$gcc"]
+        }
+    ]
+}
