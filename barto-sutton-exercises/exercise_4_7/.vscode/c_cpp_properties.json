@@ -4,8 +4,8 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
-                "/usr/include/python3.10", // Python include path
-                "/usr/lib/python3/dist-packages/numpy/core/include" // NumPy include path
+                "/usr/include/python3.10",
+                "/usr/lib/python3/dist-packages/numpy/core/include"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/g++",

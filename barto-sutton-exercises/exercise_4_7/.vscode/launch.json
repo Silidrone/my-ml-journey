@@ -2,15 +2,15 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "(gdb) Launch",  // Name of the configuration
+            "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/output_executable",  // The output file from tasks.json
-            "args": [],  // Any command-line arguments you want to pass
-            "stopAtEntry": false,
+            "program": "${workspaceFolder}/output_executable",
+            "args": [],
             "cwd": "${workspaceFolder}",
             "environment": [],
-            "externalConsole": true,  // Show an external console to run your program
+            "externalConsole": false,
+            "preLaunchTask": "build cpp",
             "MIMode": "gdb",
             "setupCommands": [
                 {
@@ -19,8 +19,7 @@
                     "ignoreFailures": true
                 }
             ],
-            "preLaunchTask": "build cpp",  // Link the build task here
-            "miDebuggerPath": "/usr/bin/gdb",  // Path to your debugger
+            "miDebuggerPath": "/usr/bin/gdb",
             "internalConsoleOptions": "openOnSessionStart"
         }
     ]
