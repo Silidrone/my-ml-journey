@@ -1,4 +1,5 @@
 #include "CarRentalEnvironment.h"
+#include "m_utils.h"
 
 void CarRentalEnvironment::generate_requests_returns_combinations(const State& s)
 {
@@ -36,7 +37,7 @@ void CarRentalEnvironment::generate_action_space()
 {
     for (int i = -5; i <= 5; i++)
     {
-        m_A.push_back(i);
+        m_A.emplace_back(i);
     }
 }
 

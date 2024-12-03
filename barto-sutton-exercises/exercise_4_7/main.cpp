@@ -2,8 +2,8 @@
 #include "VValuePolicyIteration.h"
 #include <matplot/matplot.h>
 
-template <typename State, typename Action, typename StateHash = std::hash<State>, typename ActionHash = std::hash<Action>>
-void plot_policy(PolicyIteration<State, Action, StateHash, ActionHash> &policy_iteration)
+template <typename State, typename Action>
+void plot_policy(Policy<State, Action> &pi)
 {
     int grid_size_x = 21;
     int grid_size_y = 21;
@@ -25,9 +25,10 @@ void plot_policy(PolicyIteration<State, Action, StateHash, ActionHash> &policy_i
 
     auto [X, Y] = matplot::meshgrid(x, y);
 
-    for (const State &s : policy_iteration.m_mdp.S())
+    for (auto &p : pi.map_container())
     {
-        Z[s[0]][s[1]] = static_cast<double>(policy_iteration.pi(s));
+        auto s = p.first;
+        Z[s[0]][s[1]] = static_cast<double>(pi(s));
     }
 
     matplot::contour(X, Y, Z);
@@ -45,6 +46,7 @@ int main() {
     VValuePolicyIteration value_policy_iteration(&car_rental_environment);
 
     value_policy_iteration.policy_iteration();
-    plot_policy();
+    auto policy = value_policy_iteration.get_policy();
+    plot_policy(policy);
 
 }

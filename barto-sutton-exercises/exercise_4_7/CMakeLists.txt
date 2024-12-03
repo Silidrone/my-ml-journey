@@ -18,6 +18,8 @@ include_directories(
 
 find_package(PythonLibs 3.10 REQUIRED)
 
-add_executable(output_executable main.cpp MDPCore.h MDPSolver.h PolicyIteration.h QValuePolicyIteration.h VValuePolicyIteration.h m_utils.h m_utils.cpp CarRentalEnvironment.h CarRentalEnvironment.cpp)
+add_executable(output_executable main.cpp MDPCore.h MDPSolver.h PolicyIteration.h QValuePolicyIteration.h VValuePolicyIteration.h m_utils.h m_utils.cpp CarRentalEnvironment.h CarRentalEnvironment.cpp
+        Policy.h
+)
 
 target_link_libraries(output_executable PUBLIC matplot ${PYTHON_LIBRARIES})

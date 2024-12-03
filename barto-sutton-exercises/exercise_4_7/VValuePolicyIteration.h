@@ -4,11 +4,8 @@
 #include <limits>
 
 
-template <typename State, typename Action, typename StateHash = std::hash<State>, typename ActionHash = std::hash<Action>>
-class VValuePolicyIteration : public PolicyIteration<State, Action, StateHash, ActionHash> {
-public:
-    using Reward = typename MDPCore<State, Action, StateHash, ActionHash>::Reward;
-    using Return = typename PolicyIteration<State, Action, StateHash, ActionHash>::Return;
+template <typename State, typename Action>
+class VValuePolicyIteration : public PolicyIteration<State, Action> {
 protected:
     static constexpr double DISCOUNT_RATE = 0.9f;
     static constexpr double POLICY_THRESHOLD_EPSILON = 0.01f;
@@ -93,8 +90,8 @@ protected:
         return policy_stable;
     }
 public:
-    explicit VValuePolicyIteration(MDPCore<State, Action, StateHash, ActionHash>* mdp_core)
-        : PolicyIteration<State, Action, StateHash, ActionHash>(mdp_core, 0.9f, 0.01f) {}
+    explicit VValuePolicyIteration(MDPCore<State, Action>* mdp_core)
+        : PolicyIteration<State, Action>(mdp_core, 0.9f, 0.01f) {}
 
 };
 

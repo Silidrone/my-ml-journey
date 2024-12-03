@@ -4,12 +4,9 @@
 #include "PolicyIteration.h"
 #include <limits>
 
-template <typename State, typename Action, typename StateHash = std::hash<State>, typename ActionHash = std::hash<Action>>
-class QValuePolicyIteration : public PolicyIteration<State, Action, StateHash, ActionHash> {
+template <typename State, typename Action>
+class QValuePolicyIteration : public PolicyIteration<State, Action> {
 protected:
-    using Reward = typename PolicyIteration<State, Action, StateHash, ActionHash>::Reward;
-    using Return = typename PolicyIteration<State, Action, StateHash, ActionHash>::Return;
-
     void policy_evaluation() override
     {
         Return delta;
@@ -69,11 +66,9 @@ protected:
         return policy_stable;
     }
 public:
-explicit QValuePolicyIteration(MDPCore<State, Action, StateHash, ActionHash>* mdp_core)
-    : PolicyIteration<State, Action, StateHash, ActionHash>(mdp_core, 0.9f, 0.01f) {}
+explicit QValuePolicyIteration(MDPCore<State, Action>* mdp_core)
+    : PolicyIteration<State, Action>(mdp_core, 0.9f, 0.01f) {}
 
 };
-
-
 
 #endif //QVALUEPOLICYITERATION_H

@@ -22,7 +22,7 @@ double next_poisson(const double lambda)
     {
         k++;
         const double u = rand() / (RAND_MAX + 1.0); // Generate uniform random number u between 0 and 1
-        p *= u;                               // Update probability
+        p *= u; // Update probability
     } while (p > L);
 
     return k - 1; // Subtract 1 because we start from 0 events

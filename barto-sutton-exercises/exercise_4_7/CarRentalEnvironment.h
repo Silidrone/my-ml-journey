@@ -4,7 +4,6 @@
 #include "MDPCore.h"
 #include <unordered_map>
 #include <vector>
-#include "m_utils.h"
 
 // Define constants used in the environment
 static constexpr double DISCOUNT_RATE = 0.9f;
@@ -17,14 +16,12 @@ static constexpr int NUMBER_OF_LOCATIONS = 2;
 static constexpr double POLICY_THRESHOLD_EPSILON = 0.01;
 
 using State = std::vector<int>;
-using StateHash = vector_hash<int>;
 using Action = int;
-using ActionHash = std::hash<Action>;
 
-class CarRentalEnvironment : public MDPCore<State, Action, StateHash, ActionHash> {
+class CarRentalEnvironment : public MDPCore<State, Action> {
 protected:
     // Requests - responses for each state
-    std::unordered_map<State, std::vector<std::vector<std::pair<int, int>>>, StateHash> m_rrs;
+    std::unordered_map<State, std::vector<std::vector<std::pair<int, int>>>, StateHash<State>> m_rrs;
 
     void generate_requests_returns_combinations(const State& s);
     void generate_action_space();
