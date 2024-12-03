@@ -13,7 +13,7 @@ protected:
     void initialize_policy() override {
         for (const State &s : this->m_mdp->S())
         {
-            this->m_pi[s] = 0;
+            this->m_pi.set(s, 0);
         }
     }
 
@@ -79,7 +79,7 @@ protected:
             }
 
             // maximizing_action should, theoretically, always be initialized
-            this->m_pi[s] = maximizing_action;
+            this->m_pi.set(s, maximizing_action);
 
             if (old_value != max_value)
             {

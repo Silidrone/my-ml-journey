@@ -7,6 +7,23 @@
 template <typename State, typename Action>
 class QValuePolicyIteration : public PolicyIteration<State, Action> {
 protected:
+    void initialize_policy() override {
+        for (const State &s : this->m_mdp->S())
+        {
+            this->m_pi.set(s, 0);
+        }
+    }
+
+    void initialize_value_functions() override {
+        for (const State &s : this->m_mdp->S())
+        {
+            this->m_v[s] = 0;
+            for (const Action &a : this->m_mdp->A()) {
+                this->m_Q[{s, a}] = 0;
+            }
+        }
+    }
+
     void policy_evaluation() override
     {
         Return delta;
@@ -55,7 +72,7 @@ protected:
             }
 
             // maximizing_action should, theoretically, always be initialized
-            this->m_pi[s] = maximizing_action;
+            this->m_pi.set(s, maximizing_action);
 
             if (old_value != max_return)
             {

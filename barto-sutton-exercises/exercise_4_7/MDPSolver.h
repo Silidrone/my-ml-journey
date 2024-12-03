@@ -18,11 +18,15 @@ protected:
 
     virtual void initialize_policy() = 0;
     virtual void initialize_value_functions() = 0;
-
 public:
     virtual ~MDPSolver() = default;
 
     explicit MDPSolver(MDPCore<State, Action>* mdp_core) : m_mdp(mdp_core) {}
+
+    virtual void initialize() {
+        initialize_policy();
+        initialize_value_functions();
+    }
 
     Action pi(State s)
     {

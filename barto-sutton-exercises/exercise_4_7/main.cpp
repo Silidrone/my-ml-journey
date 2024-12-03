@@ -45,6 +45,9 @@ int main() {
     CarRentalEnvironment car_rental_environment;
     VValuePolicyIteration value_policy_iteration(&car_rental_environment);
 
+    car_rental_environment.initialize();
+    value_policy_iteration.initialize();
+
     value_policy_iteration.policy_iteration();
     auto policy = value_policy_iteration.get_policy();
     plot_policy(policy);

@@ -26,6 +26,7 @@ protected:
     void generate_requests_returns_combinations(const State& s);
     void generate_action_space();
     void generate_dynamics_p();
+public:
     void initialize() override;
 };
 
